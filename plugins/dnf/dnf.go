@@ -8,7 +8,6 @@ Example Config file:
         { "plugin": "dnf", "check": "thunderbird", "installPackage": "thunderbird" }
     ]
  */
-
 package dnf
 
 import (
