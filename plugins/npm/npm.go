@@ -3,11 +3,10 @@ NpmPlugin checks for installed `npm` packages by checking if the binary is in $P
 NpmPlugin installs the `npm` package (without sudo)
 
 Example Config file:
-```
-[
-    { "plugin": "npm", "check": "ng", "installPackage": "@angular/cli" }
-]
-```
+
+    [
+        { "plugin": "npm", "check": "ng", "installPackage": "@angular/cli" }
+    ]
  */
 package npm
 

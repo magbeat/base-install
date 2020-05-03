@@ -3,18 +3,17 @@ CustomPlugin checks for installed package by checking if the binary is in $PATH,
 CustomPlugin installs the package with the supplied commands
 
 Example Config file:
-```
-[
-    { 
-        "plugin": "custom", "check": "autorandr", "checkType": "bin", "commands": 
-            [
-                "git clone https://github.com/wertarbyte/autorandr.git $HOME/install/tmp/autorandr",
-                "cp $HOME/install/tmp/autorandr/autorandr $HOME/.local/bin/autorandr",
-                "chmod +x $HOME/.local/bin/autorandr"
-            ]
-    }
-]
-```
+
+    [
+        { 
+            "plugin": "custom", "check": "autorandr", "checkType": "bin", "commands": 
+                [
+                    "git clone https://github.com/wertarbyte/autorandr.git $HOME/install/tmp/autorandr",
+                    "cp $HOME/install/tmp/autorandr/autorandr $HOME/.local/bin/autorandr",
+                    "chmod +x $HOME/.local/bin/autorandr"
+                ]
+        }
+    ]
  */
 
 package custom

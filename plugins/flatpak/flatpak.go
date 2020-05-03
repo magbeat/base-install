@@ -3,11 +3,10 @@ FlatpakPlugin checks for installed `flatpak` packages by checking if the package
 FlatpakPlugin installs the `flatpak` package using `flatpak`
 
 Example Config file:
-```
-[
-    { "plugin": "flatpak", "check": "Slack", "installPackage": "com.slack.Slack", "installOption": "flathub" }
-]
-```
+
+    [
+        { "plugin": "flatpak", "check": "Slack", "installPackage": "com.slack.Slack", "installOption": "flathub" }
+    ]
  */
 package flatpak
 

@@ -3,11 +3,10 @@ DnfPlugin checks for installed `dnf` packages by checking if the package was ins
 DnfPlugin installs the `dnf` package using `dnf`
 
 Example Config file:
-```
-[
-    { "plugin": "dnf", "check": "thunderbird", "installPackage": "thunderbird" }
-]
-```
+
+    [
+        { "plugin": "dnf", "check": "thunderbird", "installPackage": "thunderbird" }
+    ]
  */
 
 package dnf

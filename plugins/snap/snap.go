@@ -3,11 +3,10 @@ SnapPlugin checks for installed `snap` packages by checking if the binary is in 
 SnapPlugin installs the `snap` package using `snap`
 
 Example Config file:
-```
-[
-    { "plugin": "snap", "check": "helm", "installPackage": "doctl", "installOption": "--classic" }
-]
-```
+
+    [
+        { "plugin": "snap", "check": "helm", "installPackage": "doctl", "installOption": "--classic" }
+    ]
  */
 package snap
 
