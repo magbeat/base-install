@@ -3,10 +3,12 @@ BaseInstall helps to reinstall all packages on a new system.
 
 BaseInstall expects an `install` directory in the following form:
 
+```
 install/
     - config/
     - files/ (optional)
     - tmp/ (optional)
+```
 
 If BaseInstall is executed without arguments it assumes the location of the `install` directory to be in $HOME
 

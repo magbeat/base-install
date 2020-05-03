@@ -1,5 +1,6 @@
 /*
-NpmPlugin checks for installed  npm  packages by checking if the binary is available.
+NpmPlugin checks for installed `npm` packages by checking if the binary is in $PATH.
+NpmPlugin installs the `npm` package (without sudo)
 
 Example Config file:
 ```
@@ -8,23 +9,25 @@ Example Config file:
 ]
 ```
  */
-package plugins
+package npm
 
 import (
 	"bytes"
+	"github.com/magbeat/base-install/plugins"
 	"io"
 	"log"
 	"os"
 	"os/exec"
 )
 
-type NpmPlugin struct{}
+type Plugin struct{}
 
-func NewNpmPlugin() NpmPlugin { return NpmPlugin{} }
+func NewNpmPlugin() Plugin { return Plugin{} }
 
 // Check checks if `task.CheckValue` is installed by looking up the binary
-func (p NpmPlugin) Check(task Task) (installed bool, err error) {
+func (p Plugin) Check(task plugins.Task) (installed bool, err error) {
 	_, lerr := exec.LookPath(task.CheckValue)
+
 	if lerr != nil {
 		installed = false
 	} else {
@@ -35,7 +38,7 @@ func (p NpmPlugin) Check(task Task) (installed bool, err error) {
 }
 
 // Install installs the `task.InstallPackage` globally via npm (without sudo)
-func (p NpmPlugin) Install(task Task) (success bool, err error) {
+func (p Plugin) Install(task plugins.Task) (success bool, err error) {
 	success = false
 	installCmd := exec.Command("npm", "install", "-g", task.InstallPackage)
 

@@ -4,6 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/magbeat/base-install/plugins"
+	"github.com/magbeat/base-install/plugins/custom"
+	"github.com/magbeat/base-install/plugins/dnf"
+	"github.com/magbeat/base-install/plugins/flatpak"
+	"github.com/magbeat/base-install/plugins/not_implemented"
+	"github.com/magbeat/base-install/plugins/npm"
+	"github.com/magbeat/base-install/plugins/snap"
 	"io/ioutil"
 	"log"
 	"os"
@@ -65,17 +71,17 @@ func processTasks(tasks []plugins.Task) {
 
 		switch task.Plugin {
 		case plugins.Dnf:
-			plugin = plugins.NewDnfPlugin()
+			plugin = dnf.NewDnfPlugin()
 		case plugins.Snap:
-			plugin = plugins.NewSnapPlugin()
+			plugin = snap.NewSnapPlugin()
 		case plugins.Flatpack:
-			plugin = plugins.NewFlatpakPlugin()
+			plugin = flatpak.NewFlatpakPlugin()
 		case plugins.Custom:
-			plugin = plugins.NewCustomPlugin()
+			plugin = custom.NewCustomPlugin()
 		case plugins.Npm:
-			plugin = plugins.NewNpmPlugin()
+			plugin = npm.NewNpmPlugin()
 		default:
-			plugin = plugins.NewNotImplementedPlugin()
+			plugin = not_implemented.NewNotImplementedPlugin()
 		}
 
 		installed, err = plugin.Check(task)

@@ -1,7 +1,20 @@
-package plugins
+/*
+DnfPlugin checks for installed `dnf` packages by checking if the package was installed via yum / dnf 
+DnfPlugin installs the `dnf` package using `dnf`
+
+Example Config file:
+```
+[
+    { "plugin": "dnf", "check": "thunderbird", "installPackage": "thunderbird" }
+]
+```
+ */
+
+package dnf
 
 import (
 	"bytes"
+	"github.com/magbeat/base-install/plugins"
 	"log"
 	"os"
 	"os/exec"
@@ -10,11 +23,11 @@ import (
 
 var installedPackages string
 
-type DnfPlugin struct {
+type Plugin struct {
 	InstalledPackages string
 }
 
-func NewDnfPlugin() DnfPlugin {
+func NewDnfPlugin() Plugin {
 	if len(installedPackages) == 0 {
 		var buf bytes.Buffer
 
@@ -27,17 +40,19 @@ func NewDnfPlugin() DnfPlugin {
 		}
 		installedPackages = string(buf.Bytes())
 	}
-	return DnfPlugin{
+	return Plugin{
 		InstalledPackages: installedPackages,
 	}
 }
 
-func (p DnfPlugin) Check(task Task) (installed bool, err error) {
+// Check checks if `task.CheckValue` is installed by looking at the installed yum packages
+func (p Plugin) Check(task plugins.Task) (installed bool, err error) {
 	installed = strings.Contains(p.InstalledPackages, task.CheckValue)
 	return installed, err
 }
 
-func (p DnfPlugin) Install(task Task) (success bool, err error) {
+// Install installs the `task.InstallPackage` via `dnf` 
+func (p Plugin) Install(task plugins.Task) (success bool, err error) {
 	success = false
 	installCmd := exec.Command("sudo", "dnf", "install", "-y", task.InstallPackage)
 	installCmd.Stdout = os.Stdout
