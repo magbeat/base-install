@@ -8,12 +8,15 @@ BaseInstall helps to reinstall all packages on a new system.
 
 BaseInstall expects an `install` directory in the following form:
 
+```
 install/
 
 ```diff
 - config/
 - files/ (optional)
 - tmp/ (optional)
+```
+
 ```
 
 ## If BaseInstall is executed without arguments it assumes the location of the `install` directory to be in $HOME
@@ -25,7 +28,7 @@ The `custom` installation allows the user to execute multiple commands (like `gi
 
 ## Sub Packages
 
-* [plugins](./plugins): NpmPlugin checks for installed npm packages by checking if the binary is available.
+* [plugins](./plugins)
 
 ---
 Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
