@@ -1,3 +1,13 @@
+/*
+NpmPlugin checks for installed  npm  packages by checking if the binary is available.
+
+Example Config file:
+```
+[
+    { "plugin": "npm", "check": "ng", "installPackage": "@angular/cli" }
+]
+```
+ */
 package plugins
 
 import (
@@ -12,6 +22,7 @@ type NpmPlugin struct{}
 
 func NewNpmPlugin() NpmPlugin { return NpmPlugin{} }
 
+// Check checks if `task.CheckValue` is installed by looking up the binary
 func (p NpmPlugin) Check(task Task) (installed bool, err error) {
 	_, lerr := exec.LookPath(task.CheckValue)
 	if lerr != nil {
@@ -23,6 +34,7 @@ func (p NpmPlugin) Check(task Task) (installed bool, err error) {
 	return installed, err
 }
 
+// Install installs the `task.InstallPackage` globally via npm (without sudo)
 func (p NpmPlugin) Install(task Task) (success bool, err error) {
 	success = false
 	installCmd := exec.Command("npm", "install", "-g", task.InstallPackage)
