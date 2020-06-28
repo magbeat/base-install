@@ -1,5 +1,5 @@
 /*
-FlatpakPlugin checks for installed `flatpak` packages by checking if the package was installed via `flatpak` 
+FlatpakPlugin checks for installed `flatpak` packages by checking if the package was installed via `flatpak`
 FlatpakPlugin installs the `flatpak` package using `flatpak`
 
 Example Config file:
@@ -7,7 +7,7 @@ Example Config file:
     [
         { "plugin": "flatpak", "check": "Slack", "installPackage": "com.slack.Slack", "installOption": "flathub" }
     ]
- */
+*/
 package flatpak
 
 import (
@@ -52,10 +52,10 @@ func (p Plugin) Check(task plugins.Task) (installed bool, err error) {
 	return installed, err
 }
 
-// Install installs the `task.InstallPackage` via `flatpak` from the `task.InstallOption` repository 
+// Install installs the `task.InstallPackage` via `flatpak` from the `task.InstallOption` repository
 func (p Plugin) Install(task plugins.Task) (success bool, err error) {
 	success = false
-	installCmd := exec.Command("sudo", "flatpak", "install", task.InstallOption, task.InstallPackage)
+	installCmd := exec.Command("sudo", "flatpak", "install", "-y", task.InstallOption, task.InstallPackage)
 	installCmd.Stdout = os.Stdout
 	err = installCmd.Run()
 
