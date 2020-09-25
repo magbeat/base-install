@@ -11,6 +11,7 @@ import (
 	"github.com/magbeat/base-install/plugins/npm"
 	"github.com/magbeat/base-install/plugins/pacman"
 	"github.com/magbeat/base-install/plugins/snap"
+	"github.com/magbeat/base-install/plugins/yay"
 	"io/ioutil"
 	"log"
 	"os"
@@ -83,6 +84,8 @@ func processTasks(tasks []plugins.Task) {
 			plugin = npm.NewNpmPlugin()
 		case plugins.Pacman:
 			plugin = pacman.NewPacmanPlugin()
+		case plugins.Yay:
+			plugin = yay.NewYayPlugin()
 		default:
 			plugin = not_implemented.NewNotImplementedPlugin()
 		}
