@@ -9,6 +9,7 @@ import (
 	"github.com/magbeat/base-install/plugins/flatpak"
 	"github.com/magbeat/base-install/plugins/not_implemented"
 	"github.com/magbeat/base-install/plugins/npm"
+	"github.com/magbeat/base-install/plugins/pacman"
 	"github.com/magbeat/base-install/plugins/snap"
 	"io/ioutil"
 	"log"
@@ -80,6 +81,8 @@ func processTasks(tasks []plugins.Task) {
 			plugin = custom.NewCustomPlugin()
 		case plugins.Npm:
 			plugin = npm.NewNpmPlugin()
+		case plugins.Pacman:
+			plugin = pacman.NewPacmanPlugin()
 		default:
 			plugin = not_implemented.NewNotImplementedPlugin()
 		}
