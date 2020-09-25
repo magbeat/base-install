@@ -17,6 +17,8 @@ const (
 	Flatpack PluginType = "flatpak"
 	Custom   PluginType = "custom"
 	Npm      PluginType = "npm"
+	Pacman   PluginType = "pacman"
+	Yay      PluginType = "yay"
 )
 
 type CheckType string
