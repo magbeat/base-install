@@ -108,7 +108,7 @@ func processTasks(tasks []plugins.Task) {
 		}
 
 		if err != nil {
-			log.Printf("Error while checking %s with plugin %s", task.CheckValue, task.Plugin)
+			log.Printf("Error while installing %s with plugin %s", task.CheckValue, task.Plugin)
 			log.Printf(err.Error())
 		}
 
